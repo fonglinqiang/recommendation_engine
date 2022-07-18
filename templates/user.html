@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if user_not_found %}
+<div style="width: 100%;text-align: center;">
+    <h2>User {{user_data['id']}} not found</h2>
+</div>
+{% else %}
+<div style="width: 100%;text-align: center;">
+    <h2>User {{user_data['id']}} watched {{user_data['unique_titles']}} titles</h2>
+</div>
+{% endif %}
+
+<div style="float:left;width: 50%;height:2700px">
+    <h3>{{static_recommendations['position_1_title']}}</h3>
+    {% for title in static_recommendations['position_1']%}
+    <li>{{movie_mapping[title]}}</li>
+    {%endfor%}
+
+    <h3>{{static_recommendations['position_2_title']}}</h3>
+    {% for title in static_recommendations['position_2']%}
+    <li>{{movie_mapping[title]}}</li>
+    {%endfor%}
+
+    <h3>{{static_recommendations['position_3_title']}}</h3>
+    {% for title in static_recommendations['position_3']%}
+    <li>{{movie_mapping[title]}}</li>
+    {%endfor%}
+</div>
+
+{% if user_data != None %}
+
+<div style="float:right;width: 50%;"></div>
+    <h3>Recommendations</h3>
+    {% for title in user_data['recommendations']%}
+    <li>{{movie_mapping[title]}}</li>
+    {%endfor%}
+
+    <h3>Because you watched {{movie_mapping[user_data['similarity_0']]}}</h3>
+    {% for title in user_data['similarity_0_titles']%}
+    <li>{{movie_mapping[title]}}</li>
+    {%endfor%}
+
+    {% if user_data['similarity_1'] == '' %}
+    <h3>2nd similar title not avaliable</h3>
+    {% else %}
+    <h3>Because you watched {{movie_mapping[user_data['similarity_1']]}}</h3>
+    {% for title in user_data['similarity_1_titles']%}
+    <li>{{movie_mapping[title]}}</li>
+    {%endfor%}
+    {% endif %}
+
+    <h3>Genres: {{user_data['genres_0']}}</h3>
+    {% for title in user_data['genres_0_recs']%}
+    <li>{{movie_mapping[title]}}</li>
+    {%endfor%}
+
+    <h3>Genres: {{user_data['genres_1']}}</h3>
+    {% for title in user_data['genres_1_recs']%}
+    <li>{{movie_mapping[title]}}</li>
+    {%endfor%}
+
+    <h3>Genres: {{user_data['genres_2']}}</h3>
+    {% for title in user_data['genres_2_recs']%}
+    <li>{{movie_mapping[title]}}</li>
+    {%endfor%}
+
+    <h3>Genres: {{user_data['genres_3']}}</h3>
+    {% for title in user_data['genres_3_recs']%}
+    <li>{{movie_mapping[title]}}</li>
+    {%endfor%}
+
+    <h3>Genres: {{user_data['genres_4']}}</h3>
+    {% for title in user_data['genres_4_recs']%}
+    <li>{{movie_mapping[title]}}</li>
+    {%endfor%}
+</div>
+
+{% else %}
+
+<div style="float:right;width: 50%;"></div>
+    <h3>{{error_msg}}</h3>
+</div>
+
+{%endif%}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if num_user == 0 %}
+
+<h3 style="text-align: center;">No new qualified users for personalised recommendations updates</h3>
+
+{% else %}
+
+<h3 style="text-align: center;">Personalised Recommendations Updated</h3>
+
+{% for user in users %}
+<li style="text-align: center;">{{user}}</li>
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}

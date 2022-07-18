@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% for engine in con %}
+    <li>{{engine['name']}}: {{engine['document_count']}} records</li>
+{% endfor %}
+
+{% endblock %}

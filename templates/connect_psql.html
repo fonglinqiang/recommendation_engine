@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% for table in table_records %}
+    <li>{{table}}: {{table_records[table]}} records</li>
+{% endfor %}
+
+{% endblock %}

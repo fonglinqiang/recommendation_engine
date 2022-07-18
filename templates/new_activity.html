@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Simulating new activity for User: {{user_activity['user_id']}}</h2>
+
+<p>
+    Video Name: {{user_id_video_name}}<br>
+    Video ID: {{user_activity['media_id']}}<br>
+    Last Play Time in Seconds: {{user_activity['last_play_time_in_seconds']}} <br>
+    Completed: {{user_activity['completed']}} <br>
+    Continue Playing Active: {{user_activity['continue_playing_active']}} <br>
+    History Record Active: {{user_activity['history_record_active']}} <br>
+    Created Date: {{user_activity['created_date']}} <br>
+    Created TS: {{user_activity['created_ts']}} <br>
+    Updated Date: {{user_activity['updated_date']}} <br>
+    Updated TS: {{user_activity['updated_ts']}} <br>
+</p>
+
+{% endblock %}
